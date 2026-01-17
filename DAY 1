@@ -10,4 +10,5 @@ Day 1: Time & Space Complexity (The Interview Language)
 
         Missing Number in Array (Solve in O(n) time)  ->  https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1
 
-Daily Info: In Python, avoid operations like item in list inside a loop, as that turns your code into O(N2). For the "Missing Number," use the Sum Formula 2n(n+1)​ to solve it in O(1) space, rather than creating a new list.
+Daily Info: In Python, avoid operations like item in list inside a loop, as that turns your code into O(N2). 
+            For the "Missing Number," use the Sum Formula n(n+1)/2​ to solve it in O(1) space, rather than creating a new list.
