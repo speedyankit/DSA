@@ -1,1 +1,29 @@
+#User function Template for python3
+from collections import deque
+class Solution:
+    def firstNegInt(self, arr, k): 
+         # code here 
+        dq = deque()
+        n = len(arr)
+        ans = []
+        
+        for i in range(n):
+            if dq and dq[0]<=i-k:
+                dq.popleft()
+            
+            if arr[i]<0:
+                dq.append(i)
+                
+            if i >= k-1:
+                if dq:
+                    ans.append(arr[dq[0]])
+                else:
+                    ans.append(0)
+        
+        return ans
+        
+        
+            
+        
+            
 
