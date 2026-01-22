@@ -1,79 +1,58 @@
-Topic: Sliding Window – Variable Size
+Day 5: Sliding Window (Variable Size) 🚀
+📌 Topic
 
-  This technique is used when the window size is not fixed and depends on a condition (sum, length, count, etc.).
+Variable Size Sliding Window — a dynamic technique where the window grows and shrinks like a caterpillar to satisfy a specific condition. Unlike fixed windows, the size k is not given; instead, we often look for the "longest" or "smallest" subarray that meets a criteria.
 
-  Unlike fixed-size sliding window, here we expand and shrink the window dynamically.
+This topic introduces two distinct approaches based on the input data:
 
-🧠 Core Idea
+    Standard Expansion/Shrinking: Best for arrays with positive numbers only.
 
-We maintain:
+    Prefix Sum (Hash Map): Required when arrays contain negative numbers.
 
-  A left pointer (start)
+🛠️ Core Concepts
 
-  A right pointer (end)
+    The Caterpillar Method (Expand & Shrink):
 
-  A running state (sum / count / condition)
+        Expand: Move right pointer to include elements until the condition breaks.
 
-We:
+        Shrink: Move left pointer to restore the condition.
 
-Expand the window by moving end
-Shrink the window by moving start when the condition breaks
-Track the best answer (length / count / etc.)
+    Prefix Sum Logic:
 
-📌 Questions Covered
-1️⃣ Longest Subarray with Sum K
+        Using the math property CurrentSum - Target = PreviousSum to find subarrays in O(N) time when simple sliding fails (due to negative numbers).
 
-🔗 Problem: Find the longest subarray whose sum equals K.
+    Zero-Based Indexing: Careful handling of array indices when calculating length (right - left + 1).
 
-⚠️ Important Note:
+🧪 Practice Problems
+1️⃣ Subarray with Given Sum (Non-negative)
 
-If the array contains negative numbers, normal sliding window fails.
+    Goal: Find the starting and ending indices of a contiguous subarray that adds up to a specific sum S (assuming non-negative numbers).
 
-We must use Prefix Sum + HashMap.
+    Key Idea:
 
-2️⃣ Subarray with Given Sum
+        Use two pointers (left, right).
 
-🔗 Problem: Check if there exists a subarray with a given sum K.
+        Add elements at right to current_sum.
 
-Approach depends on:
+        While current_sum > S, subtract arr[left] and move left forward.
 
-Only positive numbers → Sliding Window
+        If current_sum == S, return the indices.
 
-Negative numbers present → Prefix Sum + HashMap
+  📎 Problem Link: https://www.geeksforgeeks.org/problems/subarray-with-given-sum-1587115621/1
 
-🧰 What You Need to Know Before Solving These
-✅ 1. Prefix Sum Concept
+2️⃣ Longest Sub-Array with Sum K (Handles Negatives)
 
-Understand how cumulative sums work:
+    Goal: Find the length of the longest subarray with a sum equal to K. This array contains negative numbers, so the standard sliding window approach will fail.
 
-prefix[i] = sum of elements from index 0 to i
+    Key Idea:
 
+        Use a Hash Map to store the first occurrence of every Prefix Sum.
 
-This helps in quickly finding subarray sums.
+        Calculate Rem = CurrentSum - K.
 
-✅ 2. HashMap (Dictionary)
+        If Rem exists in the map, the subarray between the old index and the current index has sum K.
 
-Used to:
+        Update MaxLen accordingly.
 
-Store prefix sums
+  📎 Problem Link: https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
 
-Track first occurrence of a sum
-
-Check if (current_sum - K) exists
-
-This is mandatory when negatives are involved.
-
-✅ 3. Difference Between Fixed & Variable Window
-Fixed Window	Variable Window
-Window size constant	Window size changes
-Easy logic	Requires condition handling
-Mostly positives	Negatives need hashmap
-✅ 4. When Sliding Window FAILS
-
-Sliding Window does NOT work when:
-
-Array contains negative numbers
-
-Sum can decrease even after expanding window
-
-👉 Use Prefix Sum + HashMap instead.
