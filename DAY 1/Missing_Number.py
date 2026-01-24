@@ -1,4 +1,4 @@
-class Solution:
+class Solution:https://github.com/speedyankit/DSA
     def missingNum(self, arr):
         # code here
         
